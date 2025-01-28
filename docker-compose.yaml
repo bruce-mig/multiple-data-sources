@@ -1,0 +1,25 @@
+services:
+  mysql:
+    image: mysql:9.2
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: mds
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass
+    networks:
+      - mds
+    ports:
+      - "3306:3306"
+
+  postgres:
+    image: postgres:17.2
+    environment:
+      POSTGRES_DB: mds
+      POSTGRES_USER: user2
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5432:5432"
+    networks:
+      - mds
+networks:
+  mds:

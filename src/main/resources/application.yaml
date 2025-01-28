@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: multiple-data-sources
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+
+app:
+  datasource:
+    blog:
+      url: jdbc:mysql://localhost:3306/mds
+      username: user1
+      password: pass
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    subscribers:
+      url: jdbc://postgresql://localhost:5432/mds
+      username: user2
+      password: pass
+      driver-class-name: org.postgres.Driver
+
+
