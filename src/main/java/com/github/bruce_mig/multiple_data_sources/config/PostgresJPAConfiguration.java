@@ -1,6 +1,5 @@
 package com.github.bruce_mig.multiple_data_sources.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,18 +16,19 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.github.bruce_mig.multiple_data_sources.subscriber",
+        basePackages = "com.github.bruce_mig.multiple_data_sources.subscriber.repository",
         entityManagerFactoryRef = "postgresEntityManagerFactoryBean",
         transactionManagerRef = "postgresTransactionManager"
 )
-public class PostgresJPAConfig {
+public class PostgresJPAConfiguration {
 
     @Bean
-    LocalContainerEntityManagerFactoryBean postgresEntityManagerFactoryBean(EntityManagerFactoryBuilder entityManagerFactoryBuilder,
-                                                                         @Qualifier("subscriberDataSource") DataSource dataSource) {
+    LocalContainerEntityManagerFactoryBean postgresEntityManagerFactoryBean(
+            EntityManagerFactoryBuilder entityManagerFactoryBuilder,
+            @Qualifier("subscriberDataSource") DataSource dataSource) {
         return entityManagerFactoryBuilder
                 .dataSource(dataSource)
-                .packages("com.github.bruce_mig.multiple_data_sources.subscriber")
+                .packages("com.github.bruce_mig.multiple_data_sources.subscriber.model")
                 .build();
     }
 
