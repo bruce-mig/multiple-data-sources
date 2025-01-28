@@ -49,3 +49,8 @@ Contributions are welcome! Please fork this repository and submit a pull request
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+
+There is a really good section in the Spring Boot Reference Documentation on [Configuring Two DataSources](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-access.configure-two-datasources).
