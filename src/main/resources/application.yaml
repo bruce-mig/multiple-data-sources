@@ -13,9 +13,9 @@ app:
       password: pass
       driver-class-name: com.mysql.cj.jdbc.Driver
     subscribers:
-      url: jdbc://postgresql://localhost:5432/mds
+      url: jdbc:postgresql://localhost:5432/mds
       username: user2
       password: pass
-      driver-class-name: org.postgres.Driver
+      driver-class-name: org.postgresql.Driver
 
 
