@@ -1,7 +1,5 @@
 package com.github.bruce_mig.multiple_data_sources.config;
 
-import jakarta.persistence.EntityManagerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,18 +15,19 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.github.bruce_mig.multiple_data_sources.post",
+        basePackages = "com.github.bruce_mig.multiple_data_sources.post.repository",
         entityManagerFactoryRef = "mysqlEntityManagerFactoryBean",
         transactionManagerRef = "mysqlTransactionManager"
 )
-public class MySqlJPAConfig {
+public class MySqlJPAConfiguration {
 
     @Bean
-    LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactoryBean(EntityManagerFactoryBuilder entityManagerFactoryBuilder,
-                                                                         @Qualifier("blogDataSource") DataSource dataSource) {
+    LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactoryBean(
+            EntityManagerFactoryBuilder entityManagerFactoryBuilder,
+            @Qualifier("blogDataSource") DataSource dataSource) {
         return entityManagerFactoryBuilder
                 .dataSource(dataSource)
-                .packages("com.github.bruce_mig.multiple_data_sources.post")
+                .packages("com.github.bruce_mig.multiple_data_sources.post.model")
                 .build();
     }
 

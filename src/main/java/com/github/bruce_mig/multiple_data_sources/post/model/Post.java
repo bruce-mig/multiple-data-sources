@@ -1,14 +1,16 @@
-package com.github.bruce_mig.multiple_data_sources.post;
+package com.github.bruce_mig.multiple_data_sources.post.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.time.LocalDate;
 
 
 @Builder
-@Entity(name = "posts")
+@Entity
+@Table(name = "posts")
 public class Post {
     @Id
     private Integer id;
