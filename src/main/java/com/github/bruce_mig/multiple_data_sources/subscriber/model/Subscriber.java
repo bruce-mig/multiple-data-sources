@@ -1,11 +1,13 @@
-package com.github.bruce_mig.multiple_data_sources.subscriber;
+package com.github.bruce_mig.multiple_data_sources.subscriber.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Builder
-@Entity(name = "subscribers")
+@Entity
+@Table(name = "subscribers")
 public class Subscriber {
     @Id
     private Integer id;
