@@ -1,10 +1,9 @@
 package com.github.bruce_mig.multiple_data_sources;
 
-import com.github.bruce_mig.multiple_data_sources.post.Post;
-import com.github.bruce_mig.multiple_data_sources.post.PostDAO;
-import com.github.bruce_mig.multiple_data_sources.subscriber.Subscriber;
-import com.github.bruce_mig.multiple_data_sources.subscriber.SubscriberDAO;
-import lombok.extern.slf4j.Slf4j;
+import com.github.bruce_mig.multiple_data_sources.post.model.Post;
+import com.github.bruce_mig.multiple_data_sources.post.repository.PostDAO;
+import com.github.bruce_mig.multiple_data_sources.subscriber.model.Subscriber;
+import com.github.bruce_mig.multiple_data_sources.subscriber.repository.SubscriberDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -33,11 +32,11 @@ public class MultipleDataSourcesApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Post post = new Post(1, "Hello, World!", "hello-world", LocalDate.now(), 5, "Spring Boot, Java");
-		postDAO.save(post);
+		postDAO.save(post); // mysql
 		log.info("saved post: {} in MySql DB", post);
 
 		Subscriber example = new Subscriber(1, "example", "example@gmail.com");
-		subscriberDAO.save(example);
+		subscriberDAO.save(example); // postgres
 		log.info("saved Subscriber: {} in Postgres DB", example);
 	}
 }
